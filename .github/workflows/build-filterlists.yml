@@ -4,8 +4,9 @@ permissions:
   contents: write
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Build"]
+    types: [requested]
 
   schedule:
   - cron: "0 15 * * *"
