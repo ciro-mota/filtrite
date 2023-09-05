@@ -9,7 +9,7 @@ on:
     types: [requested]
 
   schedule:
-  - cron: "0 15 * * *"
+  - cron: "33 3 */3 * *"
 
   workflow_dispatch:
 
