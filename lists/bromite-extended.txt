@@ -38,3 +38,4 @@ https://raw.githubusercontent.com/robonxt/CleanYourTwitter/master/CleanYourTwitt
 # My own block list
 https://secure.fanboy.co.nz/fanboy-cookiemonster.txt
 https://www.i-dont-care-about-cookies.eu/abp/
+https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpanishFilter/sections/specific.txt
