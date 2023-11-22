@@ -66,3 +66,16 @@ jobs:
         name: Logs
         path: logs/*.log
       if: ${{ always() }}
+
+  del-old-runs:
+    needs: build
+    name: Delete old workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 3
+          keep_minimum_runs: 1
