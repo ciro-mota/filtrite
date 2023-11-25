@@ -1,7 +1,6 @@
 name: Build filterlists
 
-permissions:
-  contents: write
+permissions: write-all
 
 on:
   workflow_run:
@@ -69,7 +68,6 @@ jobs:
 
   del-old-runs:
     needs: build
-    permissions: write-all
     name: Delete old workflows
     runs-on: ubuntu-latest
     steps:
