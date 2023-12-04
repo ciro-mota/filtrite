@@ -7,11 +7,24 @@ on:
   workflow_run:
     workflows: ["Build"]
     types: [requested]
+  workflow_dispatch:
+      inputs:
+        delete_run_by_conclusion_pattern:
+          description: 'Remove runs based on conclusion: action_required, cancelled, failure, skipped, success'
+          required: true
+          default: "ALL"
+          type: choice
+          options:
+            - "ALL"
+            - "Unsuccessful: action_required,cancelled,failure,skipped"
+            - action_required
+            - cancelled
+            - failure
+            - skipped
+            - success
 
   schedule:
   - cron: "33 3 */3 * *"
-
-  workflow_dispatch:
 
 jobs:
   build:
@@ -79,3 +92,9 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 7
           keep_minimum_runs: 3
+          delete_run_by_conclusion_pattern: >-
+            ${{
+              startsWith(github.event.inputs.delete_run_by_conclusion_pattern, 'Unsuccessful:')
+              && 'action_required,cancelled,failure,skipped'
+              || github.event.inputs.delete_run_by_conclusion_pattern
+            }}
