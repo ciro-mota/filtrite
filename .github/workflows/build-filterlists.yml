@@ -23,8 +23,8 @@ on:
             - skipped
             - success
 
-  schedule:
-  - cron: "33 3 */3 * *"
+  # schedule:
+  # - cron: "33 3 */3 * *"
 
 jobs:
   build:
